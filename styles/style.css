@@ -8,6 +8,13 @@ html, body {
 h1 {
     margin:0;
     padding:0;
+    font-family: 'Comforter', cursive;
+    font-size: 72px;
+}
+
+h2 {
+    font-family: 'Comforter', cursive;
+    font-size: 36px;
 }
 
 body {
@@ -16,22 +23,80 @@ body {
     align-items: center;
     justify-content:center;
     background-color: beige;
-    gap:3rem;
+}
+
+
+
+
+
+#left {
+    background-color: lightgray;
+    border-radius: 20px;
+    border: 1px solid black;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    height:50%;
+    width:10%;
+}
+
+#leftbuttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height:100%;
+}
+
+#right {
+    background-color: lightgray;
+    border-radius: 20px;
+    border: 1px solid black;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    height:50%;
+    width:10%;
+}
+
+#rightbuttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height:100%;
+}
+
+
+
+
+
+#middle {
+    display:flex;
+    width:100%;
+    height:auto;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 #container {
     display:flex;
-    background-color: bisque;
-    width:45%;
+    background-color: bisque; /* bisque */
+    width:40%;
     height:60vh;
     justify-content: stretch;
     align-items: center;
     flex-wrap: wrap;
-    border:5px solid black;
+    border:60px solid rgb(255, 53, 53);
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 5px 5px rgba(128, 128, 128, 0.3);
 }
 
 .box {
-    background-color: aquamarine;
+    background-color: lightgrey; /* aquamarine */
     display:flex;
     justify-content: center;
     align-items: center;

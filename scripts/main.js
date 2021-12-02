@@ -1,5 +1,5 @@
 const container = document.querySelector('#container');
-let sides = 200;
+let sides = 16;
 
 for (let i = 0; i < (sides ** 2); i++) {
     let size=100/sides;
@@ -11,7 +11,6 @@ for (let i = 0; i < (sides ** 2); i++) {
     box.textContent = "";
     container.appendChild(box);
 }
-
 
 const boxes = document.querySelectorAll('.box');
 
