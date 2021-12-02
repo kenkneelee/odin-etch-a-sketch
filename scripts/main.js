@@ -1,6 +1,9 @@
 const container = document.querySelector('#container');
 let sides = 16;
 
+document.onload = game(16);
+
+function game(sides) {
 for (let i = 0; i < (sides ** 2); i++) {
     let size=100/sides;
     console.log(size);
@@ -11,9 +14,9 @@ for (let i = 0; i < (sides ** 2); i++) {
     box.textContent = "";
     container.appendChild(box);
 }
+}
 
 const boxes = document.querySelectorAll('.box');
-
 boxes.forEach((box) => {
     box.addEventListener('mouseover', () => {
         box.style.background = "black";
