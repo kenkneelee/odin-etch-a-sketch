@@ -3,6 +3,8 @@ let sides = 16;
 
 document.onload = game(16);
 
+
+
 function game(sides) {
 for (let i = 0; i < (sides ** 2); i++) {
     let size=100/sides;
@@ -25,3 +27,12 @@ boxes.forEach((box) => {
         box.style.color = "aquamarine";
     })
 })
+
+
+document.getElementById("clear").onclick = function() {clear()};
+
+function clear() {
+    boxes.forEach((box) => {
+        box.style.background="lightgrey";
+    })
+}
