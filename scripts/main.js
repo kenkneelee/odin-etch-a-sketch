@@ -5,8 +5,13 @@ let sides = 16;
 document.onload = load();
 function load() {
     game(16);
-    etch();
+    etch("black");
 }
+
+/* buttons for drawing modes */
+document.getElementById("mode1").onclick = function () { etch("black") };
+document.getElementById("mode2").onclick = function () { etch("white") };
+document.getElementById("mode3").onclick = function () { randomEtch() };
 
 /* clear button to reset canvas to grey background */
 document.getElementById("clear").onclick = function () { clear() };
@@ -51,11 +56,11 @@ function game(sides) {
 }
 
 /* function to change background colour of grid square div */
-function etch() {
+function etch(colour) {
 const boxes = document.querySelectorAll('.box');
 boxes.forEach((box) => {
     box.addEventListener('mouseover', () => {
-        box.style.background = "black";
+        box.style.background = colour;
     })
     box.addEventListener('mouseout', function () {
         //setTimeout(function () { box.style.background = "lightgrey" }, 500);
@@ -63,6 +68,18 @@ boxes.forEach((box) => {
 })
 }
 
+function randomEtch() {
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach((box) => {
+        const randomColour = Math.floor(Math.random()*16777215).toString(16);
+        box.addEventListener('mouseover', () => {
+            box.style.background = '#' + randomColour;
+        })
+        box.addEventListener('mouseout', function () {
+            //setTimeout(function () { box.style.background = "lightgrey" }, 500);
+        })
+    })
+    }
 /* function to reset canvas to grey */
 function clear() {
     const boxes = document.querySelectorAll('.box');
