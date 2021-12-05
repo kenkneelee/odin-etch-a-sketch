@@ -29,7 +29,7 @@ document.getElementById("newgrid").onclick = function () {
     newGrid();
     let newSize = prompt("Enter grid size (1-100):")
     game(newSize); 
-    etch()
+    etch("black")
     output.textContent = newSize ;}
 
 /* */
@@ -38,7 +38,7 @@ document.getElementById("newgrid").onclick = function () {
   output.innerHTML = this.value;
   newGrid();
   game(slider.value);
-  etch();
+  etch("black");
 }
 
 /* Functions */
