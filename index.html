@@ -34,11 +34,13 @@
         <div id="right">
             <h2>Canvas</h2>
             <div id="rightbuttons">
-                <button id="newgrid">New Grid</buton>
                 <button id="changebg">Change background colour</button>
-                <button id="clear">Clear canvas</button>
-                <button id="test">test</button>
-
+                <button id="clear">Reset canvas</button>
+                <button id="newgrid">New Grid</button>
+                <div class="slidecontainer">
+                    <input type="range" min="1" max="100" value="16" class="slider" id="gridSlider">
+                    <div id="gridValue"></div>
+                </div>
             </div>
         </div>
     </div>
