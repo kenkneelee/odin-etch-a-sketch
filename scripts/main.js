@@ -71,8 +71,8 @@ boxes.forEach((box) => {
 function randomEtch() {
     const boxes = document.querySelectorAll('.box');
     boxes.forEach((box) => {
-        const randomColour = Math.floor(Math.random()*16777215).toString(16);
         box.addEventListener('mouseover', () => {
+            const randomColour = Math.floor(Math.random()*16777215).toString(16);
             box.style.background = '#' + randomColour;
         })
         box.addEventListener('mouseout', function () {
