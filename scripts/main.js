@@ -14,7 +14,14 @@ document.getElementById("mode2").onclick = function () { etch("white") };
 document.getElementById("mode3").onclick = function () { randomEtch() };
 
 /* clear button to reset canvas to grey background */
-document.getElementById("clear").onclick = function () { clear() };
+document.getElementById("clear").onclick = function () {
+    newGrid();
+    game(16);
+    etch("black");
+    clear();
+    output.textContent = "16";
+    gridSlider.value = 16;
+}
 
 /* button to change grid to random colour */
 document.getElementById("changebg").onclick = function () { changeBg() };
@@ -25,20 +32,28 @@ var output = document.getElementById("gridValue");
 output.textContent = slider.value; // Display the default slider value
 
 /* new grid button to play game using user prompt size */
-document.getElementById("newgrid").onclick = function () { 
-    newGrid();
-    let newSize = prompt("Enter grid size (1-100):")
-    game(newSize); 
-    etch("black")
-    output.textContent = newSize ;}
+document.getElementById("newgrid").onclick = function () {
+    let newSize = prompt("Enter grid size (1-100):");
+    if (newSize >= 1 && newSize <= 100) {
+        newGrid();
+        game(newSize);
+        etch("black");
+        output.textContent = newSize;
+        gridSlider.value = newSize;
+    }
+    else {
+        alert("Invalid dimensions!");
+
+    }
+}
 
 /* */
 // update slider output and play new game with slider value 
-  slider.oninput = function() {
-  output.innerHTML = this.value;
-  newGrid();
-  game(slider.value);
-  etch("black");
+slider.oninput = function () {
+    output.innerHTML = this.value;
+    newGrid();
+    game(slider.value);
+    etch("black");
 }
 
 /* Functions */
@@ -57,29 +72,28 @@ function game(sides) {
 
 /* function to change background colour of grid square div */
 function etch(colour) {
-const boxes = document.querySelectorAll('.box');
-boxes.forEach((box) => {
-    box.addEventListener('mouseover', () => {
-        box.style.background = colour;
+
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach((box) => {
+        box.addEventListener('mouseover', () => {
+            box.style.background = colour;
+        })
     })
-    box.addEventListener('mouseout', function () {
-        //setTimeout(function () { box.style.background = "lightgrey" }, 500);
-    })
-})
 }
+
 
 function randomEtch() {
     const boxes = document.querySelectorAll('.box');
     boxes.forEach((box) => {
         box.addEventListener('mouseover', () => {
-            const randomColour = Math.floor(Math.random()*16777215).toString(16);
+            const randomColour = Math.floor(Math.random() * 16777215).toString(16);
             box.style.background = '#' + randomColour;
         })
         box.addEventListener('mouseout', function () {
             //setTimeout(function () { box.style.background = "lightgrey" }, 500);
         })
     })
-    }
+}
 /* function to reset canvas to grey */
 function clear() {
     const boxes = document.querySelectorAll('.box');
@@ -92,9 +106,9 @@ function clear() {
 /* function that changes background to random colour */
 function changeBg() {
     const boxes = document.querySelectorAll('.box');
-    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     boxes.forEach((box) => {
-    box.style.backgroundColor = '#' + randomColor;
+        box.style.backgroundColor = '#' + randomColor;
     }
     )
 }
@@ -102,7 +116,7 @@ function changeBg() {
 /* */
 function newGrid() {
     let allBoxes = container.getElementsByClassName('box');
-    [].forEach.call(document.querySelectorAll('.box'),function(e){
+    [].forEach.call(document.querySelectorAll('.box'), function (e) {
         e.parentNode.removeChild(e);
-      });
+    });
 }
