@@ -105,8 +105,8 @@ slider.oninput = function () {
 /* Functions */
 /* function to run a game given input of side length */
 function game(sides) {
+    let size = 100 / sides;
     for (let i = 0; i < (sides ** 2); i++) {
-        let size = 100 / sides;
         const box = document.createElement('div');
         box.classList.add('box');
         box.style.width = size + '%';

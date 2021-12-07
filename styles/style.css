@@ -117,7 +117,6 @@ button:hover{
     flex-wrap: wrap;
     border:60px solid rgb(255, 53, 53);
     border-radius: 40px;
-    overflow: hidden;
     box-shadow: 5px 5px rgba(128, 128, 128, 0.3);
 }
 
