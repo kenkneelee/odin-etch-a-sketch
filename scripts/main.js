@@ -73,7 +73,8 @@ slider.oninput = function () {
     output.innerHTML = this.value + "x" + this.value;
     newGrid();
     game(slider.value);
-    choosebg.value= "#D3D3D3"
+    choosebg.value= "#D3D3D3";
+    brush.value="#000000"
     etch("black");
 }
 
