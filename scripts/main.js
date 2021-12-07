@@ -33,10 +33,25 @@ document.getElementById("choosebg").oninput = function () {
     })
 };
 
+/* erase button */
+document.getElementById("erase").onclick = function () {
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach((box) => {
+        box.style.background = bgcolour.value;
+    }
+    )
+}
+
 /* clear button to reset canvas to grey background */
 document.getElementById("clear").onclick = function () {
     newGrid();
     game(16);
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach((box) => {
+        box.style.background = "#D3D3D3";
+    }
+    )
+    choosebg.value="#D3D3D3";
     etch("black");
     brush.value="#000000";
     clear();
@@ -58,6 +73,11 @@ document.getElementById("newgrid").onclick = function () {
     if (newSize >= 1 && newSize <= 100) {
         newGrid();
         game(newSize);
+        const boxes = document.querySelectorAll('.box');
+        boxes.forEach((box) => {
+            box.style.background = bgcolour.value;
+        }
+        )
         etch("black");
         output.textContent = newSize + "x" + newSize;
         gridSlider.value = newSize;
@@ -73,7 +93,11 @@ slider.oninput = function () {
     output.innerHTML = this.value + "x" + this.value;
     newGrid();
     game(slider.value);
-    choosebg.value= "#D3D3D3";
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach((box) => {
+        box.style.background = bgcolour.value;
+    }
+    )
     brush.value="#000000"
     etch("black");
 }
@@ -118,9 +142,8 @@ function randomEtch() {
 /* function to reset canvas to grey */
 function clear() {
     const boxes = document.querySelectorAll('.box');
-    choosebg.value='#D3D3D3'
     boxes.forEach((box) => {
-        box.style.background = "lightgrey";
+        box.style.background = choosebg.value;
     })
 }
 

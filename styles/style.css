@@ -113,7 +113,7 @@ button:hover{
     width:40%;
     height:60vh;
     justify-content: stretch;
-    align-items: center;
+    align-items: stretch;
     flex-wrap: wrap;
     border:60px solid rgb(255, 53, 53);
     border-radius: 40px;
