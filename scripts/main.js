@@ -12,6 +12,19 @@ function load() {
 document.getElementById("mode1").onclick = function () { etch("black") };
 document.getElementById("mode2").onclick = function () { etch("white") };
 document.getElementById("mode3").onclick = function () { randomEtch() };
+document.getElementById("head").oninput = function () {
+    console.log(brush.value);
+    etch(brush.value)
+};
+var brush = document.getElementById("head");
+var bgcolour = document.getElementById("choosebg");
+
+document.getElementById("choosebg").oninput = function () {
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach((box) => {
+        box.style.background = bgcolour.value;
+    })
+};
 
 /* clear button to reset canvas to grey background */
 document.getElementById("clear").onclick = function () {
@@ -43,7 +56,6 @@ document.getElementById("newgrid").onclick = function () {
     }
     else {
         alert("Invalid dimensions!");
-
     }
 }
 
