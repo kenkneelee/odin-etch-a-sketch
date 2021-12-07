@@ -9,29 +9,39 @@ function load() {
 }
 
 /* buttons for drawing modes */
+
+//black drawing mode
 document.getElementById("mode1").onclick = function () {
     etch("black");
     brush.value = "#000000"
 };
+
+//write drawing mode
 document.getElementById("mode2").onclick = function () {
     etch("white")
     brush.value = "#FFFFFF"
 };
+
+//rainbow drawing mode
 document.getElementById("mode3").onclick = function () { randomEtch() };
 
+//eraser drawing mode
 document.getElementById("eraser").onclick = function () {
     etch(bgcolour.value)
     brush.value = bgcolour.value;
  };
 
-
+//custom colour drawing mode
 document.getElementById("head").oninput = function () {
     etch(brush.value)
 };
 
+//call and store brush and background colour pickers
 var brush = document.getElementById("head");
 var bgcolour = document.getElementById("choosebg");
 
+
+//on changing bg slider change bg to chosen colour
 document.getElementById("choosebg").oninput = function () {
     const boxes = document.querySelectorAll('.box');
     boxes.forEach((box) => {
@@ -48,7 +58,7 @@ document.getElementById("erase").onclick = function () {
     )
 }
 
-/* clear button to reset canvas to grey background */
+/* reset button to reset canvas to 16x16 grid on grey background */
 document.getElementById("clear").onclick = function () {
     newGrid();
     game(16);
@@ -132,7 +142,7 @@ function etch(colour) {
     })
 }
 
-
+//rainbow drawing mode function
 function randomEtch() {
     const boxes = document.querySelectorAll('.box');
     boxes.forEach((box) => {
@@ -145,7 +155,7 @@ function randomEtch() {
         })
     })
 }
-/* function to reset canvas to grey */
+/* function to erase current drawing, keep current bg colour */
 function clear() {
     const boxes = document.querySelectorAll('.box');
     boxes.forEach((box) => {
@@ -165,7 +175,7 @@ function changeBg() {
     )
 }
 
-/* */
+/* function to delete all grid squares */
 function newGrid() {
     let allBoxes = container.getElementsByClassName('box');
     [].forEach.call(document.querySelectorAll('.box'), function (e) {
