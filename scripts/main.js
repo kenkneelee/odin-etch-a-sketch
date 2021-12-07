@@ -9,13 +9,20 @@ function load() {
 }
 
 /* buttons for drawing modes */
-document.getElementById("mode1").onclick = function () { etch("black") };
-document.getElementById("mode2").onclick = function () { etch("white") };
+document.getElementById("mode1").onclick = function () {
+    etch("black");
+    brush.value = "#000000"
+};
+document.getElementById("mode2").onclick = function () {
+    etch("white")
+    brush.value = "#FFFFFF"
+};
 document.getElementById("mode3").onclick = function () { randomEtch() };
+
 document.getElementById("head").oninput = function () {
-    console.log(brush.value);
     etch(brush.value)
 };
+
 var brush = document.getElementById("head");
 var bgcolour = document.getElementById("choosebg");
 
@@ -31,6 +38,7 @@ document.getElementById("clear").onclick = function () {
     newGrid();
     game(16);
     etch("black");
+    brush.value="#000000";
     clear();
     output.textContent = "16";
     gridSlider.value = 16;
@@ -65,6 +73,7 @@ slider.oninput = function () {
     output.innerHTML = this.value;
     newGrid();
     game(slider.value);
+    choosebg.value= "#D3D3D3"
     etch("black");
 }
 
@@ -84,7 +93,6 @@ function game(sides) {
 
 /* function to change background colour of grid square div */
 function etch(colour) {
-
     const boxes = document.querySelectorAll('.box');
     boxes.forEach((box) => {
         box.addEventListener('mouseover', () => {
@@ -109,6 +117,7 @@ function randomEtch() {
 /* function to reset canvas to grey */
 function clear() {
     const boxes = document.querySelectorAll('.box');
+    choosebg.value='#D3D3D3'
     boxes.forEach((box) => {
         box.style.background = "lightgrey";
     })
@@ -119,6 +128,7 @@ function clear() {
 function changeBg() {
     const boxes = document.querySelectorAll('.box');
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    choosebg.value = '#' + randomColor;
     boxes.forEach((box) => {
         box.style.backgroundColor = '#' + randomColor;
     }
