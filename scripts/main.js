@@ -40,7 +40,7 @@ document.getElementById("clear").onclick = function () {
     etch("black");
     brush.value="#000000";
     clear();
-    output.textContent = "16";
+    output.textContent = "16x16";
     gridSlider.value = 16;
 }
 
@@ -50,7 +50,7 @@ document.getElementById("changebg").onclick = function () { changeBg() };
 /* button and function to delete all grid squares, start new game with prompt number of grid squares, enable etch */
 var slider = document.getElementById("gridSlider");
 var output = document.getElementById("gridValue");
-output.textContent = slider.value; // Display the default slider value
+output.textContent = slider.value + "x" + slider.value; // Display the default slider value
 
 /* new grid button to play game using user prompt size */
 document.getElementById("newgrid").onclick = function () {
@@ -59,7 +59,7 @@ document.getElementById("newgrid").onclick = function () {
         newGrid();
         game(newSize);
         etch("black");
-        output.textContent = newSize;
+        output.textContent = newSize + "x" + newSize;
         gridSlider.value = newSize;
     }
     else {
@@ -70,7 +70,7 @@ document.getElementById("newgrid").onclick = function () {
 /* */
 // update slider output and play new game with slider value 
 slider.oninput = function () {
-    output.innerHTML = this.value;
+    output.innerHTML = this.value + "x" + this.value;
     newGrid();
     game(slider.value);
     choosebg.value= "#D3D3D3"
@@ -130,7 +130,7 @@ function changeBg() {
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     choosebg.value = '#' + randomColor;
     boxes.forEach((box) => {
-        box.style.backgroundColor = '#' + randomColor;
+        box.style.background = '#' + randomColor;
     }
     )
 }
