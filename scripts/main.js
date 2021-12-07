@@ -19,6 +19,12 @@ document.getElementById("mode2").onclick = function () {
 };
 document.getElementById("mode3").onclick = function () { randomEtch() };
 
+document.getElementById("eraser").onclick = function () {
+    etch(bgcolour.value)
+    brush.value = bgcolour.value;
+ };
+
+
 document.getElementById("head").oninput = function () {
     etch(brush.value)
 };
