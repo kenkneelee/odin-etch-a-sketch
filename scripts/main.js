@@ -37,6 +37,11 @@ document.getElementById("whiteMode").onclick = function () {
 document.getElementById("rainbowMode").onclick = function () {
     randomEtch();
 };
+//pencil drawing mode
+document.getElementById("pencilMode").onclick = function () {
+    pencilEtch();
+    brush.value = "#D3D3D3";
+};
 //eraser drawing mode
 document.getElementById("eraserMode").onclick = function () {
     etch(bgcolour.value);
@@ -130,6 +135,18 @@ function randomEtch() {
         })
     })
 }
+//pencil drawing mode function
+function pencilEtch() {
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach((box) => {
+        let col = 200;
+        box.addEventListener('mouseover', () => {
+            box.style.background = "rgba(" + col + "," + col + "," + col + ")";
+            col-=20;
+        })
+    })
+}
+
 /* function that changes background to random colour */
 function changeBg() {
     const boxes = document.querySelectorAll('.box');
