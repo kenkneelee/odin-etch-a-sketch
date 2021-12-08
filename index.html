@@ -16,26 +16,26 @@
 <body>
     <h1>Etch-a-Sketch</h1>
     <div id="middle">
-<!--Brush configuration-->        
+        <!--Brush configuration-->
         <div id="left">
             <h2>Brush</h2>
             <div id="leftbuttons">
                 <div id="mode4">
-                    <input type="color" id="head" name="head" value="#000000">
+                    <input type="color" id="brush" name="head" value="#000000">
                     <label for="head">Brush Colour</label>
                 </div>
-                <button id="mode1">Black mode</button>
-                <button id="mode2">White mode</button>
-                <button id="mode3">Rainbow mode</button>
-                <button id="eraser">Eraser mode</button>
+                <button id="blackMode">Black mode</button>
+                <button id="whiteMode">White mode</button>
+                <button id="rainbowMode">Rainbow mode</button>
+                <button id="eraserMode">Eraser mode</button>
             </div>
         </div>
 
-<!--Main drawing area-->
+        <!--Main drawing area-->
         <div id="container">
         </div>
 
-<!--Canvas configuration-->
+        <!--Canvas configuration-->
         <div id="right">
             <h2>Canvas</h2>
             <div id="rightbuttons">
@@ -44,8 +44,8 @@
                     <label for="head">Background</label>
                 </div>
                 <button id="changebg">Random BG</button>
-                <button id="clear">Reset canvas</button>
                 <button id="erase">Erase</button>
+                <button id="reset">Reset canvas</button>
                 <button id="newgrid">New Grid</button>
                 <div class="slidecontainer">
                     <input type="range" min="1" max="100" value="16" class="slider" id="gridSlider">
