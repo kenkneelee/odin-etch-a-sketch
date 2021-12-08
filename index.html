@@ -11,12 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Comforter&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
     <script src="scripts/main.js" defer></script>
-
 </head>
 
 <body>
     <h1>Etch-a-Sketch</h1>
     <div id="middle">
+<!--Brush configuration-->        
         <div id="left">
             <h2>Brush</h2>
             <div id="leftbuttons">
@@ -31,21 +31,19 @@
             </div>
         </div>
 
-
+<!--Main drawing area-->
         <div id="container">
         </div>
 
-
+<!--Canvas configuration-->
         <div id="right">
             <h2>Canvas</h2>
             <div id="rightbuttons">
-
-
                 <div id="custombg">
                     <input type="color" id="choosebg" name="head" value="#D3D3D3">
                     <label for="head">Background</label>
                 </div>
-                <button id="changebg">Random background</button>
+                <button id="changebg">Random BG</button>
                 <button id="clear">Reset canvas</button>
                 <button id="erase">Erase</button>
                 <button id="newgrid">New Grid</button>

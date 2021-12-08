@@ -1,46 +1,50 @@
-const container = document.querySelector('#container');
+/* Variable declarations --------------------------------------------*/
 let sides = 16;
+const container = document.querySelector('#container');
 
-/* on document load start a game with 16x16 grid, enable etch functionality */
+//call and store brush and background colour pickers
+const brush = document.getElementById("head");
+const bgcolour = document.getElementById("choosebg");
+
+/* button and function to delete all grid squares, start new game with prompt number of grid squares, enable etch */
+const slider = document.getElementById("gridSlider");
+const output = document.getElementById("gridValue");
+output.textContent = slider.value + "x" + slider.value; // Display the default slider value
+
+
+/* Event listeners--------------------------------------------------*/
+// on document load start a game with 16x16 grid, enable etch functionality 
 document.onload = load();
 function load() {
     game(16);
     etch("black");
 }
-
-/* buttons for drawing modes */
-
-//black drawing mode
-document.getElementById("mode1").onclick = function () {
-    etch("black");
-    brush.value = "#000000"
-};
-
-//write drawing mode
-document.getElementById("mode2").onclick = function () {
-    etch("white")
-    brush.value = "#FFFFFF"
-};
-
-//rainbow drawing mode
-document.getElementById("mode3").onclick = function () { randomEtch() };
-
-//eraser drawing mode
-document.getElementById("eraser").onclick = function () {
-    etch(bgcolour.value)
-    brush.value = bgcolour.value;
- };
-
+/* Brush mode configuration------------------------------------------*/
 //custom colour drawing mode
 document.getElementById("head").oninput = function () {
     etch(brush.value)
 };
+//black drawing mode
+document.getElementById("mode1").onclick = function () {
+    etch("black");
+    brush.value = "#000000";
+};
+//write drawing mode
+document.getElementById("mode2").onclick = function () {
+    etch("white");
+    brush.value = "#FFFFFF";
+};
+//rainbow drawing mode
+document.getElementById("mode3").onclick = function () {
+    randomEtch()
+};
+//eraser drawing mode
+document.getElementById("eraser").onclick = function () {
+    etch(bgcolour.value)
+    brush.value = bgcolour.value;
+};
 
-//call and store brush and background colour pickers
-var brush = document.getElementById("head");
-var bgcolour = document.getElementById("choosebg");
-
-
+/* Canvas configuration----------------------------------------------- */
 //on changing bg slider change bg to chosen colour
 document.getElementById("choosebg").oninput = function () {
     const boxes = document.querySelectorAll('.box');
@@ -54,8 +58,7 @@ document.getElementById("erase").onclick = function () {
     const boxes = document.querySelectorAll('.box');
     boxes.forEach((box) => {
         box.style.background = bgcolour.value;
-    }
-    )
+    })
 }
 
 /* reset button to reset canvas to 16x16 grid on grey background */
@@ -65,25 +68,21 @@ document.getElementById("clear").onclick = function () {
     const boxes = document.querySelectorAll('.box');
     boxes.forEach((box) => {
         box.style.background = "#D3D3D3";
-    }
-    )
-    choosebg.value="#D3D3D3";
+    })
+    choosebg.value = "#D3D3D3";
     etch("black");
-    brush.value="#000000";
+    brush.value = "#000000";
     clear();
     output.textContent = "16x16";
     gridSlider.value = 16;
 }
 
 /* button to change grid to random colour */
-document.getElementById("changebg").onclick = function () { changeBg() };
+document.getElementById("changebg").onclick = function () {
+    changeBg();
+};
 
-/* button and function to delete all grid squares, start new game with prompt number of grid squares, enable etch */
-var slider = document.getElementById("gridSlider");
-var output = document.getElementById("gridValue");
-output.textContent = slider.value + "x" + slider.value; // Display the default slider value
-
-/* new grid button to play game using user prompt size */
+/* newgrid button to play game using user prompt size */
 document.getElementById("newgrid").onclick = function () {
     let newSize = prompt("Enter grid size (1-100):");
     if (newSize >= 1 && newSize <= 100) {
@@ -103,7 +102,6 @@ document.getElementById("newgrid").onclick = function () {
     }
 }
 
-/* */
 // update slider output and play new game with slider value 
 slider.oninput = function () {
     output.innerHTML = this.value + "x" + this.value;
@@ -114,11 +112,17 @@ slider.oninput = function () {
         box.style.background = bgcolour.value;
     }
     )
-    brush.value="#000000"
+    brush.value = "#000000"
     etch("black");
 }
 
-/* Functions */
+
+
+
+
+
+
+/* Functions------------------------------------------------------------------- */
 /* function to run a game given input of side length */
 function game(sides) {
     let size = 100 / sides;
@@ -162,7 +166,6 @@ function clear() {
         box.style.background = choosebg.value;
     })
 }
-
 
 /* function that changes background to random colour */
 function changeBg() {
