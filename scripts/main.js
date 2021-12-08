@@ -194,14 +194,6 @@ function changeBg() {
         etch(bgcolour.value)
     }
 }
-/* function to erase current drawing, keep current bg colour */
-function clear() {
-    const boxes = document.querySelectorAll('.box');
-    boxes.forEach((box) => {
-        box.style.background = choosebg.value;
-    })
-}
-
 /* function to delete all grid squares */
 function newGrid() {
     let allBoxes = container.getElementsByClassName('box');
