@@ -40,7 +40,7 @@ document.getElementById("rainbowMode").onclick = function () {
 //pencil drawing mode
 document.getElementById("pencilMode").onclick = function () {
     pencilEtch();
-    brush.value = "#D3D3D3";
+    brush.value = "#9B9B9B";
 };
 //eraser drawing mode
 document.getElementById("eraserMode").onclick = function () {
@@ -81,8 +81,7 @@ document.getElementById("newgrid").onclick = function () {
         newGrid();
         game(newSize);
         updateBg();
-        etch("black");
-        brush.value = "#000000"
+        etch(brush.value);
         output.textContent = newSize + "x" + newSize;
         gridSlider.value = newSize;
     }
@@ -96,8 +95,7 @@ slider.oninput = function () {
     newGrid();
     game(slider.value);
     updateBg();
-    brush.value = "#000000"
-    etch("black");
+    etch(brush.value);
 }
 
 
@@ -127,6 +125,7 @@ function etch(colour) {
 
 //rainbow drawing mode function
 function randomEtch() {
+    brush.value = "#FFFF00"
     const boxes = document.querySelectorAll('.box');
     boxes.forEach((box) => {
         box.addEventListener('mouseover', () => {
