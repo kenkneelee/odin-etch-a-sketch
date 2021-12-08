@@ -4,6 +4,9 @@ const container = document.querySelector('#container');
 //call and store brush and background colour pickers
 const brush = document.getElementById("brush");
 const bgcolour = document.getElementById("choosebg");
+let isErase = false;
+let isRainbow = false;
+let isPencil = false;
 
 /* grid size slider and current grid size display */
 const slider = document.getElementById("gridSlider");
@@ -27,24 +30,39 @@ brush.oninput = function () {
 document.getElementById("blackMode").onclick = function () {
     etch("black");
     brush.value = "#000000";
+    isErase = false;
+    isRainbow = false;
+    isPencil = false;
 };
-//write drawing mode
+//white drawing mode
 document.getElementById("whiteMode").onclick = function () {
     etch("white");
     brush.value = "#FFFFFF";
+    isErase = false;
+    isRainbow = false;
+    isPencil = false;
 };
 //rainbow drawing mode
 document.getElementById("rainbowMode").onclick = function () {
     randomEtch();
+    isErase = false;
+    isRainbow = true;
+    isPencil = false;
 };
 //pencil drawing mode
 document.getElementById("pencilMode").onclick = function () {
     pencilEtch();
+    isErase = false;
+    isRainbow = false;
+    isPencil = true;
     brush.value = "#9B9B9B";
 };
 //eraser drawing mode
 document.getElementById("eraserMode").onclick = function () {
     etch(bgcolour.value);
+    isErase = true;
+    isRainbow = false;
+    isPencil = false;
     brush.value = bgcolour.value;
 };
 
@@ -81,7 +99,15 @@ document.getElementById("newgrid").onclick = function () {
         newGrid();
         game(newSize);
         updateBg();
-        etch(brush.value);
+        if (isRainbow == true) {
+            randomEtch();
+        }
+        else if (isPencil == true) {
+            pencilEtch();
+        }
+        else {
+            etch(brush.value);
+        }
         output.textContent = newSize + "x" + newSize;
         gridSlider.value = newSize;
     }
@@ -95,7 +121,15 @@ slider.oninput = function () {
     newGrid();
     game(slider.value);
     updateBg();
-    etch(brush.value);
+    if (isRainbow == true) {
+        randomEtch();
+    }
+    else if (isPencil == true) {
+        pencilEtch();
+    }
+    else {
+        etch(brush.value);
+    }
 }
 
 
@@ -141,7 +175,7 @@ function pencilEtch() {
         let col = 175;
         box.addEventListener('mouseover', () => {
             box.style.background = "rgba(" + col + "," + col + "," + col + ")";
-            col-=15;
+            col -= 15;
         })
     })
 }
@@ -155,6 +189,10 @@ function changeBg() {
         box.style.background = '#' + randomColor;
     }
     )
+    if (isErase == true) {
+        brush.value = bgcolour.value;
+        etch(bgcolour.value)
+    }
 }
 /* function to erase current drawing, keep current bg colour */
 function clear() {
@@ -178,4 +216,8 @@ function updateBg() {
     boxes.forEach((box) => {
         box.style.background = bgcolour.value;
     });
+    if (isErase == true) {
+        brush.value = bgcolour.value;
+        etch(bgcolour.value);
+    }
 }
