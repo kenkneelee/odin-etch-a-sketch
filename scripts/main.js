@@ -139,10 +139,10 @@ function randomEtch() {
 function pencilEtch() {
     const boxes = document.querySelectorAll('.box');
     boxes.forEach((box) => {
-        let col = 200;
+        let col = 175;
         box.addEventListener('mouseover', () => {
             box.style.background = "rgba(" + col + "," + col + "," + col + ")";
-            col-=20;
+            col-=15;
         })
     })
 }
