@@ -185,6 +185,7 @@ function changeBg() {
     const boxes = document.querySelectorAll('.box');
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     choosebg.value = '#' + randomColor;
+    container.style.background = '#' + randomColor;
     boxes.forEach((box) => {
         box.style.background = '#' + randomColor;
     }
@@ -205,6 +206,7 @@ function newGrid() {
 // function to change the canvas background colour to the currently selected one
 function updateBg() {
     const boxes = document.querySelectorAll('.box');
+    container.style.background = bgcolour.value;
     boxes.forEach((box) => {
         box.style.background = bgcolour.value;
     });
